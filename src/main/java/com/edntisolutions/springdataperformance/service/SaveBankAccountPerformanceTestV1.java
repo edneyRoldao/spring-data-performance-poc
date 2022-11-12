@@ -14,10 +14,10 @@ public class SaveBankAccountPerformanceTestV1 {
 
     private final BankAccountService service;
 
-    public void firstTest(Long eventId) {
+    public void firstTest(Long eventId, int totalBatches) {
         LocalDateTime init = LocalDateTime.now();
 
-        for (int i = 0; i < 100_000; i++) {
+        for (int i = 0; i < totalBatches; i++) {
             List<BankAccount> accounts = BankAccount.buildRandom(100L);
             service.saveAccountsInBatch(accounts, eventId);
         }
